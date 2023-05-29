@@ -1,0 +1,352 @@
+/* Actual Page */
+#page {
+    display: flex;
+    color: #192039;
+}
+
+/* Demographic */
+#info {
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px;
+    width: 85%;
+    font-size: 25px;
+    color: #192039;
+    border-bottom: 2px solid #192039;
+}
+
+h3 {
+    text-shadow: 2px 2px 3px #d6d6d6;
+}
+
+.consult-title {
+    margin-bottom: 15px;
+}
+
+#demographic {
+    margin: -20px 10px -10px 10px;
+    font-size: 20px;
+}
+
+.demo {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.graphic {
+    margin-right: 100px
+}
+
+.space {
+    margin-right: 39px;
+}
+
+/* Edit Demographic */
+.edit {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.burger {
+    border: 0;
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+    margin: 1px 4px 4px 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+
+.burger:before {
+    width: 7px;
+    margin: 5px auto;
+    border-radius: 3px;
+}
+
+.burger:after {
+    margin: auto 5px;
+    height: 7px;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.burger:hover,
+.burger:focus {
+    background: #d6d6d6;
+}
+
+.editdemo {
+    background: #F1F4FE;
+    padding: 0px 5px 0px 5px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.demo-content {
+    display: none;
+    background-color: white;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    border-radius: 5px;
+}
+
+.demo-content button {
+    color: black;
+    position: static;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    right: 0;
+}
+
+.above-option {
+    margin-right: 35px;
+}
+
+.editconsult {
+    background: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.consult-content {
+    display: none;
+    background-color: #F1F4FE;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    border-radius: 5px;
+}
+
+.consult-content button {
+    color: black;
+    position: static;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    right: 0;
+}
+
+.show {
+    display: block;
+}
+
+/* Consultation*/
+#consultation {
+    margin: auto;
+    margin-top: -10px;
+    padding: 0;
+    width: 85%;
+    font-size: 25px;
+    color: #192039;
+}
+
+.consult-instance {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #888888;
+    color: #192039;
+    margin-bottom: 25px;
+}
+
+.date {
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #192039;
+    border-bottom: 2px solid #192039;
+}
+
+.consultation {
+    padding: 10px 30px 10px 30px;
+}
+
+.split {
+    width: 48%;
+    overflow-x: hidden;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.title {
+    margin-bottom: -15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.list {
+    font-size: 20px;
+}
+
+.circle {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+.file {
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+    margin: 1px 4px 4px 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    color: #192039;
+}
+
+.upload-file {
+    background-color: #287EFC;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 115px;
+}
+
+.upload-file label {
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+}
+
+.button {
+    height: 35px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.button input {
+    height: 100%;
+    width: 100px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+.confirm-box {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    text-align: center;
+    background: white;
+}
+
+.close {
+    cursor: pointer;
+}
+
+form #title {
+    font-family: 'Rubik', sans-serif;
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    border-style: dashed;
+}
+
+form #ltitle {
+    color: #F1F4FE;
+    padding: 4px;
+    background-color: #192039;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+form #sub {
+    width: 100px;
+    height: 25px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 5px;
+    background-color: #287EFC;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.confirm-box {
+    border-radius: 15px;
+    background: #fff;
+    height: 35%;
+    padding: 20px;
+}
+
+
+.close {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #192039;
+    color: #d6d6d6;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    float: right;
+}
+
+.top {
+    background-color: #287EFC;
+}
+
+.confirm-box button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    background-color: #888888;
+    color: #F1F4FE;
+
+}
+
+.confirm-box button:hover {
+    cursor: pointer;
+}
+
+.confirm-box h2 {
+    font-size: 35px;
+}
+
+#unconfirm {
+    background-color: #192039;
+}
+
+#yes {
+    background-color: #287EFC;
+}

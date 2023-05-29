@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #F1F4FE;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #26325D;
+    position: relative;
+    text-align: center;
+}
+
+.container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #94959C;
+}
+
+.user-details .input-box input {
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #a19eb8;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box #opt {
+    color: #26325D;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-bottom-width: 2px;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    border-color: #26325D;
+}
+
+form .button {
+    height: 35px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+form .button input {
+    height: 100%;
+    width: 100px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+form #sub1 {
+    color: white;
+    background-color: #26325D;
+}
+
+form #sub2 {
+    color: #26325D;
+}

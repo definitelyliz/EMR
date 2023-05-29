@@ -1,0 +1,101 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Consultation Page</title>
+        <link rel="stylesheet" href="/css/add-consultation.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="fixed"> 
+            <!-- HEADER PARTIAL -->
+            <%- include('../partials/header') %>
+            <!-- END HEADER PARTIAL -->
+        </div> 
+
+        <div class="content">
+            <h1>ADD CONSULTATION</h1>
+
+            <div class="today">
+                <label for="date">Date: </label>
+                <input id="today" type="date">
+                <script>
+                    var field = document.querySelector('#today');
+                    var date = new Date();
+                    // Set the date
+                    field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + 
+                    '-' + date.getDate().toString().padStart(2, 0)
+                </script>
+            </div>
+
+            <div class="container">
+
+                <form action="" method="post">
+                    <div class="consultation-details">
+
+                        <div class="input-box">
+                            <span class="details">Subjective Findings</span>
+                            <textarea name="subjective" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Assessment</span>
+                            <textarea name="Assessment" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Objective Findings</span>
+                            <textarea name="objective" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Plan</span>
+                            <textarea name="plan" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <!--
+                        for uploaded file display 
+                        <div class="showfilebox">
+                            <div class="left">
+                                <h3>filename.file</h3>
+                            </div>
+
+                            <div class="right">
+                                <span>&#215;</span>
+                            </div>
+                            
+                        </div>
+                        -->
+                        <div class="upload-file">
+                            <input type="file" id="upload" value="Upload File" hidden>
+                            <label for="upload">
+                                    <p><i class="fa-solid fa-upload"></i>  Upload File</p>
+                            </label>
+                        </div>
+
+                        <div class="plan">
+                            <button class="bbtn" id="plus"><i class="fa-solid fa-circle-plus"></i></button>
+                            <button class="rbtn" id="minus"><i class="fa-solid fa-circle-minus"></i></button>
+                            <select name="plan" id="opt">
+                                <option value="Medical">Medication</option>
+                                <option value="opt_2">Option 2</option>
+                                <option value="opt_3">Option 3</option>
+                                <input type="text">
+                            </select>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="button">
+                <input type="submit" id="sub1" value="SAVE">
+                <input type="submit" id="sub2" value="CANCEL">
+            </div>
+        </div>
+    </body>
+</html>

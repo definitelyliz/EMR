@@ -1,0 +1,19 @@
+<div id="top-nav-bar" style="z-index: 9">
+    <a id="emr" href="/">Electronic Medical Record</a>
+    <ul id="top-nav">
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-user"></i>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="/user/<%= username %>/edit">Edit User Profile</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <form action="/patients/search" id="searchbar">
+            <input type="text" placeholder="Search..." name="q" id="search">
+            <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+        </form>
+    </ul>
+</div>

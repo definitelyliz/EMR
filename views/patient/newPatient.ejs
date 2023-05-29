@@ -1,0 +1,90 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    <link rel="stylesheet" href="/css/add-patient.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Add Patient</div>
+        <form action="/patient" method="post" autocomplete="off">
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span class="details">Last Name</span>
+                    <input type="text" name="lastName" autocomplete="off" readonly
+                        onfocus="this.removeAttribute('readonly');" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">First Name</span>
+                    <input type="text" name="firstName" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Middle Name</span>
+                    <input type="text" name="middleName" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="gender" class="details">Gender</label>
+                    <select name="gender" id="opt">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Address</span>
+                    <input type="text" name="address" autocomplete="off" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Contact Details</span>
+                    <input type="text" id="contactNumber" name="contactNumber" autocomplete="off" required
+                        minlength="11" maxlength="11">
+                    <span id="error"></span>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Birthday</span>
+                    <input type="text" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" name="birthday" required>
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Occupation</span>
+                    <input type="text" name="occupation" autocomplete="off" required>
+                </div>
+
+
+                <div class="input-box">
+                    <span class="details">Referred by</span>
+                    <input type="text" name="referral" autocomplete="off" required>
+                </div>
+
+            </div>
+
+            <div class="button">
+                <input type="submit" id="sub1" value="SAVE">
+            </div>
+        </form>
+        <form action="/">
+            <div class="button">
+                <input type="submit" id="sub2" value="CANCEL">
+            </div>
+        </form>
+
+
+        </form>
+
+    </div>
+
+</body>
+
+<script src="/js/editPatient.js"></script>
+
+</html>

@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: #F1F4FE;
+}
+
+.fixed {
+    position: fixed;
+
+}
+
+/* Header */
+#top-nav {
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    float: right;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#top-nav-bar {
+    overflow: visible;
+    background-color: #26325D;
+    position: fixed;
+    width: 100%;
+    max-height: auto;
+}
+
+#emr {
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    float: left;
+    padding: 6px;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: 500px;
+    color: #F1F4FE;
+}
+
+#search {
+    padding: 5px;
+    border: none;
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    margin-right: -5px;
+    margin-left: 1px;
+    border-radius: 5px 0 0 5px;
+    width: 300px;
+}
+
+#search-button {
+    padding: 5px;
+    background: #287EFC;
+    color: #F1F4FE;
+    font-size: 15px;
+    border: 1px solid #287EFC;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.dropdown {
+    float: right;
+    overflow: visible;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #287EFC;
+    border-radius: 3px;
+    color: white;
+    font-family: inherit;
+    margin: 0;
+    /* Important for vertical align on mobile phones */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #a7b2d4;
+}
+
+
+/* dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #26325D;
+    padding: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    visibility: visible;
+}
+
+/* Add Button */
+#button {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+}
+
+.square {
+    border: 1px solid #287EFC;
+    box-shadow: 1px 1px 3px #888888;
+    padding: 10px 15px 10px 15px;
+    border-radius: 6px;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #287EFC;
+    cursor: pointer;
+
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.square:before {
+    width: 7px;
+    margin: 5px auto;
+    border-radius: 3px;
+}
+
+.square:after {
+    margin: auto 5px;
+    height: 7px;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    padding-left: 10px;
+}
+
+.fa.fa-plus {
+    color: white
+}

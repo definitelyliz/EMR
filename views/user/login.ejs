@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title"><span>WELCOME</span></div>
+        <div class="text1">Enter your credentials to access your account.</div>
+        <form action="/user" method="post">
+            <div class="row">
+                <i class="fa-sharp fa-solid fa-circle-user"></i>
+                <input type="text" placeholder="Enter your username" name="username" required>
+            </div>
+            <div class="row">
+                <i class="fa fa-key icon"></i>
+                <input type="password" placeholder="Enter your password" name="password" required>
+            </div>
+            <div class="row button">
+                <input type="submit" value="SIGN IN">
+            </div>
+            <%if(message==true) {%>
+                <span style='color: red; '> Username and password does not match</span>
+                <% } %>
+        </form>
+    </div>
+</body>
+
+</html>

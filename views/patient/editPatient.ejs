@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient</title>
+    <link rel="stylesheet" href="/css/add-patient.css">
+</head>
+
+<body>
+
+    <!-- Formatting Birthdate -->
+    <%var dateString=patient.birthday;%>
+        <%dateString=new Date(dateString).toLocaleDateString('fil-PH');%>
+
+            <div class="container">
+                <div class="title">Edit Patient</div>
+                <form action="/patient/modify/<%= patient._id %>" method="post">
+                    <div class="user-details">
+
+                        <div class="input-box">
+                            <span class="details">Last Name</span>
+                            <input type="text" value="<%= patient.lastName %>" name="lastName" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">First Name</span>
+                            <input type="text" value="<%= patient.firstName %>" name="firstName" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Middle Name</span>
+                            <input type="text" value="<%= patient.middleName %>" name="middleName" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="gender" class="details">Gender</label>
+                            <select name="gender" id="opt">
+                                <option value="<%= patient.gender %>" selected disabled hidden>
+                                    <%= patient.gender %>
+                                </option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Address</span>
+                            <input type="text" value="<%= patient.address %>" name="address" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Contact Details</span>
+                            <input type="text" value="<%= patient.contactNumber %>" id="contactNumber"
+                                name="contactNumber" autocomplete="off" required minlength="11" maxlength="11">
+                            <span id="error"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Birthday</span>
+                            <input type="text" placeholder="MM/DD/YYYY" onfocus="(this.type='date')"
+                                value="<%=dateString%>" name="birthday" required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Occupation</span>
+                            <input type="text" value="<%= patient.occupation %>" name="occupation" autocomplete="off"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Referred by</span>
+                            <input type="text" value="<%= patient.referral %>" name="referral" autocomplete="off"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" id="sub1" value="SAVE">
+                        <input type="button" id="sub2" value="CANCEL" onclick="history.back()">
+                    </div>
+
+                </form>
+
+            </div>
+
+</body>
+
+<script src="/js/editPatient.js"></script>
+
+</html>

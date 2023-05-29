@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edit Profile</title>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <link rel="stylesheet" href="/css/index-style.css"> <!-- change href to /css/index-style.css -->
+    <link rel="stylesheet" href="/css/home.css"> <!-- change href to /css/home.css -->
+    <link rel="stylesheet" href="/css/editprofile.css"> <!-- change href to /css/editprofile.css -->
+    <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="fixed">
+        <!-- HEADER PARTIAL -->
+        <%- include('../partials/header') %>
+            <!-- END HEADER PARTIAL -->
+    </div>
+
+    <div class="page">
+        <div class="wrapper">
+            <div class="title"><span>EDIT PROFILE</span></div>
+            <div class="text1">Enter your new username and password.</div>
+            <form action="/user/updateProfile" method="post">
+                <div class="row">
+                    <i class="fa-sharp fa-solid fa-circle-user"></i>
+                    <input type="text" placeholder="Enter your new username" name="new_username"
+                        value="<%= currentUser.username %>" required>
+                </div>
+                <div class="row">
+                    <i class="fa fa-envelope"></i>
+                    <input type="text" placeholder="Enter your new email" value="<%= currentUser.email %>"
+                        placeholder="E-mail" name="new_email">
+                </div>
+                <div class="row">
+                    <i class="fa fa-key icon"></i>
+                    <input type="password" placeholder="Enter your new password" name="new_password" required>
+                </div>
+                <div class="row button">
+                    <input type="submit" value="CONFIRM CHANGE">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

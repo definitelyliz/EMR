@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #F1F4FE;
+}
+
+h1 {
+    text-align: center;
+    color: #555871;
+    margin-bottom: 20px;
+    position: relative;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.today {
+    margin: 15px;
+}
+
+.today label {
+    color: #555871;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.today input[type="date"]::-webkit-calendar-picker-indicator {
+    font-size: 18px;
+    margin-left: -10px;
+    font-weight: bold;
+}
+
+
+.today input {
+    border: none;
+    background: #ffffff;
+    color: #555871;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 850px;
+    width: 100%;
+    background: white;
+    height: 100%;
+    padding: 25px 30px;
+    border-radius: 10px;
+}
+
+.container form .consultation-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .consultation-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.consultation-details .input-box .details {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #4f4f52;
+}
+
+.consultation-details .input-box textarea {
+    height: 60px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #287EFC;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.consultation_details .input-box textarea:focus {
+    border-color: #494a4e;
+}
+
+.plan button {
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.plan .btn{
+    color: #287EFC;
+    padding: 2px;
+}
+
+
+
+#opt {
+    font-size: 16px;
+    border: none;
+    background-color: #287EFC;
+    border-radius: 5px;
+    height: 25px;
+    color: white;
+    width: 110px;
+}
+
+.plan input {
+    height: 25px;
+    width: 140px;
+    border: 1px solid #287EFC;
+    border-radius: 5px;
+    margin-left: 5px;
+    border-bottom-width: 2px;
+}
+
+.upload-file {
+    background-color: #287EFC;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 115px;
+}
+
+.input-box #plan {
+    margin-top: 10px;
+}
+
+.upload-file label {
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+}
+
+.button {
+    height: 35px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.button input {
+    height: 100%;
+    width: 100px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
+#sub1 {
+    color: white;
+    background-color: #26325D;
+    cursor: pointer;
+}
+
+#sub2 {
+    color: #26325D;
+    background-color: #8EA5C7;
+    cursor: pointer;
+}
+
+#objf {
+    margin-top: 25px;
+}
