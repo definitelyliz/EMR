@@ -215,7 +215,20 @@ const controllerUser = {
             })
     },
 
-
+    securityQuestions: async (req, res) => {
+        if (!req.session.username) {
+            console.log(req.session.username);
+            var message = false
+            res.redirect('user/securityQuestions');
+        }
+        else {
+            // tried to place rendering of login page everytime user changes details
+            console.log('bruh');
+            // res.redirect(`/user/${req.session.username}`)
+            var message = false
+            res.redirect('/user/securityQuestions');
+        }
+    },
 
 }
 
