@@ -1,7 +1,7 @@
 var User = require('../model/user');
 //var Post = require('../model/post');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = 9;
 
 
 const controllerUser = {
@@ -21,7 +21,9 @@ const controllerUser = {
         }
     },
 
-
+    addUser: async (req, res) => {
+        user = User.insert
+    },
     checkLogin: async (req, res) => {
         message = '';
         var check;
@@ -29,6 +31,7 @@ const controllerUser = {
         var user = await User.findOne({ username: req.body.username })
             .then(async (check) => {
                 var user = await User.findOne({ username: req.body.username });
+                
                 if (user.username === req.body.username) {
 
                     bcrypt.compare(req.body.password, user.password, async function (err, isMatch) {
@@ -38,6 +41,7 @@ const controllerUser = {
                         }
                         else {
                             req.session.username = req.body.username;
+                            console.log(req.session.username);
                             var currentUser = await User.findOne({ 'username': req.session.username });
                             res.redirect('/');
                         }
@@ -47,6 +51,9 @@ const controllerUser = {
             .catch(() => {
                 message = 'No user found.';
                 console.log('No user found');
+                
+                //console.log(user.username);
+                
                 var message = true;
                 res.render('user/login', { message });
             });
@@ -214,8 +221,6 @@ const controllerUser = {
                 res.redirect('/user/signup');
             })
     },
-
-
 
 }
 
