@@ -48,6 +48,7 @@ app.get('/user/:username', controllerUser.userPage);
 app.get('/logout', controllerUser.logout);
 app.get('/user/:username/edit', controllerUser.editUser);
 app.post('/user/updateProfile', controllerUser.updateUser);
+app.get('/user/securityQuestions', controllerUser.securityQuestions);
 // app.get('/user/relogin', controllerUser.relogin);
 
 //Records section
