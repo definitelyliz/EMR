@@ -39,19 +39,29 @@ body {
     margin: 20px 0 12px 0;
 }
 
-form .user-details .input-box {
+form .user-details .input-box1 {
+    margin-bottom: 15px;
+    width: calc(100% / 3 - 20px);
+}
+
+form .user-details .input-box2 {
+    margin-bottom: 15px;
+    width: calc(100%);
+}
+
+form .user-details .input-box{
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
 }
 
-.user-details .input-box .details {
+.user-details .input-box .details, .input-box1, .input-box2 {
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
     color: #94959C;
 }
 
-.user-details .input-box input {
+.user-details .input-box input, .input-box1 input, .input-box2 input {
     height: 30px;
     width: 100%;
     outline: none;
@@ -63,7 +73,7 @@ form .user-details .input-box {
     transition: all 0.3s ease;
 }
 
-.user-details .input-box #opt {
+.user-details .input-box #opt, .input-box1 #opt, .input-box2 #opt {
     color: #26325D;
     height: 30px;
     border-radius: 5px;
@@ -72,8 +82,8 @@ form .user-details .input-box {
     border-bottom-width: 2px;
 }
 
-.user-details .input-box input:focus,
-.user-details .input-box input:valid {
+.user-details .input-box input:focus, .input-box1 input:focus, .input-box2 input:focus,
+.user-details .input-box input:valid, .input-box1 input:valid, .input-box2 input:valid {
     border-color: #26325D;
 }
 
@@ -101,4 +111,17 @@ form #sub1 {
 
 form #sub2 {
     color: #26325D;
+}
+
+.plan button {
+    margin-top: 5px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+}
+
+.plan .btn{
+    color: #287EFC;
+    padding: 2px;
 }

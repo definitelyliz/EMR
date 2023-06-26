@@ -63,7 +63,7 @@ patientSchema.methods.formatDate = function (dateProperty) {
 }
 
 patientSchema.index({ lastName: 'text', firstName: 'text', type: 'text' })
-const Patient = mongoose.model('Patient', patientSchema);
+const Patient = mongoose.model('patient', patientSchema);
 Patient.createIndexes();
 
 module.exports = Patient;
