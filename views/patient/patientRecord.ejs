@@ -53,46 +53,51 @@
                                     <%= patient.lastName %>, <%= patient.firstName %>
                                             <%= patient.middleName.charAt(0) %>.
                                                 <div class="edit">
-                                                    <button onclick="demoFunction()" class="editdemo burger">
-                                                        <i class="fa fa-bars"></i>
-                                                    </button>
-                                                    <div id="demoDrop" class="demo-content"
-                                                        onmouseleave="demoFunction()">
-                                                        <button class="above-option"
-                                                            onclick="window.location.href='/patient/edit/<%= patient._id %>'">
-                                                            Edit Info
+                                                    <!-- NEW FT : EDIT AND DELETE BUTTONS -->
+                                                    <!-- DELETE MODAL -->
+                                                    <div class="popup-position" id="contact-popup">
+                                                        <button onclick="window.location.href='/patient/delete/<%= patient._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <!-- <a href="#about">Minimize Info</a> -->
-                                                        <button class="above-option"
-                                                            onclick="window.location.href='/patient/delete/<%= patient._id %>'">
-                                                            Delete
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    </div>
+                                                    
+                                                    <!-- EDIT MODAL -->
+                                                    <div class="popup-position" id="contact-popup">
+                                                        <button onclick="window.location.href='/patient/edit/<%= patient._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-pencil"></i>
                                                         </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
                                                     </div>
                                                 </div>
                                 </h3>
                                 <div id="demographic">
                                     <div class="demo graphic">
                                         <div class="demo">
-                                            <b>Age:<br>Gender:<br>Occupation:<br>Referred
-                                                by:</b>
+                                            <!-- NEW FT : Bloodtype -->
+                                            <b>Age:<br>Sex:<br>Bloodtype:<br>Referred by:<br>Medical History:</b>
                                         </div>
                                         <div class="demo">
                                             <!--REPLACE WITH VARIABLES-->
                                             <%= age %><br>
                                                 <%= patient.gender %><br>
-                                                    <%= patient.occupation %><br>
-                                                        <%= patient.referral %>
+                                                    <%= patient.bloodtype %><br>
+                                                        <%= patient.referral %><br>
+                                                            <!-- LOOP MEDICAL HISTORY -->
+                                                            <%= patient.medicalhistory %>
                                         </div>
                                     </div>
+                                    <!-- FLAG : GO BACK TO THIS -->
                                     <div class="demo">
                                         <div class="demo space">
-                                            <b>Birthday:<br>Contact:<br>Address:</b>
+                                            <b>Birthday:<br>Occupation:<br>Contact:<br>Address:</b>
                                         </div>
                                         <div class="demo">
                                             <!--REPLACE WITH VARIABLES-->
                                             <%= dateString %><br>
-                                                <%= patient.contactNumber %><br>
-                                                    <%= patient.address %>
+                                                <%= patient.occupation %><br>
+                                                    <%= patient.contactNumber %><br>
+                                                        <%= patient.address %>
                                         </div>
                                     </div>
                                 </div>
@@ -115,14 +120,35 @@
                                                                                 <i class="fa fa-bars"></i> 
                                                                             </button> -->
                                                 <!-- <div id="consultDrop" onmouseleave="consultFunction()" class="consult-content"> -->
-                                                <button class="above-option"
-                                                    onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'">
-                                                    Edit Info
-                                                </button>
-                                                <button class="above-option"
-                                                    onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'">
-                                                    Delete
-                                                </button>
+                                                <!-- NEW FT : EDIT, DELETE, PRINT BUTTONS -->
+                                                <div class="edit">
+
+                                                    <!-- PRINT MODAL -->
+                                                    <div class="popup-position" id="contact-popup">        
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/printConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-print"></i>
+                                                        </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    </div>
+
+                                                    <!-- DELETE MODAL -->
+                                                    <div class="popup-position" id="contact-popup">        
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    </div>
+                                                    
+                                                    <!-- EDIT MODAL -->
+                                                    <div class="popup-position" id="contact-popup">
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    </div>
+                                                </div>
+                                </h3>
+
                                                 <!-- </div> -->
                                             </div>
                                             <!-- TRIAL -->
@@ -400,6 +426,7 @@
 </body>
 
 <script src="/js/patientRecord.js"></script>
+<script src="js/contact_modal.js"></script>
 
 
 </html>

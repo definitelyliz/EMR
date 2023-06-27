@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Patient</title>
     <link rel="stylesheet" href="/css/add-patient.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -14,27 +16,43 @@
         <form action="/patient" method="post" autocomplete="off">
             <div class="user-details">
 
-                <div class="input-box">
+                <!-- NEW FT : FULL NAME -->
+                <div class="input-box1">
                     <span class="details">Last Name</span>
                     <input type="text" name="lastName" autocomplete="off" readonly
                         onfocus="this.removeAttribute('readonly');" required>
                 </div>
 
-                <div class="input-box">
+                <div class="input-box1">
                     <span class="details">First Name</span>
                     <input type="text" name="firstName" autocomplete="off" required>
                 </div>
 
-                <div class="input-box">
+                <div class="input-box1">
                     <span class="details">Middle Name</span>
                     <input type="text" name="middleName" autocomplete="off" required>
                 </div>
 
                 <div class="input-box">
-                    <label for="gender" class="details">Gender</label>
+                    <label for="gender" class="details">Sex</label>
                     <select name="gender" id="opt">
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
+                    </select>
+                </div>
+
+                <!-- NEW FT : BLOODTYPE -->
+                <div class="input-box">
+                    <label for="bloodtype" class="details">Blood Type</label>
+                    <select name="gender" id="opt">
+                        <option value="Female">A+</option>
+                        <option value="Male">A-</option>
+                        <option value="Female">AB+</option>
+                        <option value="Male">AB-</option>
+                        <option value="Female">B+</option>
+                        <option value="Male">B-</option>
+                        <option value="Female">O+</option>
+                        <option value="Male">O-</option>
                     </select>
                 </div>
 
@@ -64,6 +82,19 @@
                 <div class="input-box">
                     <span class="details">Referred by</span>
                     <input type="text" name="referral" autocomplete="off" required>
+                </div>
+
+                <!-- NEW FT : MEDICAL HISTORY -->
+                <div class="input-box2">
+                    <span class="details">Medical History</span>
+                    <input type="text" name="medicalhistory" autocomplete="off" required>
+                    <div id="subjCont"></div>
+                    <div class="plan">
+                        <button id="subjBtn" class="btn" type="button" id="plus"><i
+                                class="fa-solid fa-circle-plus"></i></button>
+                        <button id="subjMinus" class="btn" type="button"><i
+                                class="fa-solid fa-circle-minus"></i></button>
+                    </div>
                 </div>
 
             </div>
