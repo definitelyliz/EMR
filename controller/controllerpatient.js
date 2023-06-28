@@ -32,11 +32,34 @@ const controllerPatient = {
             data.middleName = capitalizeFirstLetter(data.middleName)
             data.bloodType = req.body.bloodType;
 
+            console.log(req.body.subjective);
+
+            var planData = [];
+
+            var multipleData = Array.isArray(req.body.subjective);
+
+            if (multipleData) {
+                for (let i = 0; i < req.body.subjective.length; i++) {
+                    tempData = req.body.subjective[i];
+                    planData.push(tempData);
+                }
+            }
+            else {
+                tempData =  req.body.subjective;
+                planData.push(tempData);
+            }
+
+
             var newData = new Patient(data);
-            
+            for (let i = 0; i < planData.length; i++) {
+                newData.medicalHistory.push(planData[i]);
+                console.log(planData[i]);
+            }
+
             await newData.save()
                 .then(async () => {
                     res.redirect('/');
+                    console.log(newData);
                 })
                 .catch((err) => {
                     message = err;

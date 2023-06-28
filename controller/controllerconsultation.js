@@ -53,7 +53,7 @@ const controllerConsultation = {
         if (req.session.username) {
             const { patientId } = req.params;
             var data = req.body;
-
+            
             console.log(req.body.plandescription)
 
             var planData = [];
@@ -81,10 +81,12 @@ const controllerConsultation = {
                 newData.plan.push(planData[i]);
                 console.log(planData[i]);
             }
+            
 
             await newData.save()
                 .then(async () => {
                     res.redirect(`/patient/${patientId}`);
+                    console.log(newData);
                 })
                 .catch((err) => {
                     console.log(err)
