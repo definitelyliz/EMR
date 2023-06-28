@@ -30,8 +30,10 @@ const controllerPatient = {
             data.firstName = capitalizeFirstLetter(data.firstName)
             data.lastName = capitalizeFirstLetter(data.lastName)
             data.middleName = capitalizeFirstLetter(data.middleName)
+            data.bloodType = req.body.bloodType;
 
             var newData = new Patient(data);
+            
             await newData.save()
                 .then(async () => {
                     res.redirect('/');
@@ -39,6 +41,8 @@ const controllerPatient = {
                 .catch((err) => {
                     message = err;
                     res.redirect('/patient/new');
+                    console.log('bruh');
+                    console.log(newData);
                 })
 
 
@@ -97,12 +101,15 @@ const controllerPatient = {
                     contactNumber: req.body.contactNumber,
                     birthday: req.body.birthday,
                     occupation: req.body.occupation,
-                    referral: req.body.referral
+                    referral: req.body.referral,
+                    bloodType: req.body.bloodType,
+                    medicalHistory: req.body.medicalHistory
                 }, function (err, result) {
                     if (err) {
                         console.log(err);
                     } else {
                         res.redirect(`/patient/${patientId}`);
+                        console.log(req.body.bloodType);
                     }
                 });
 

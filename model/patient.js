@@ -42,8 +42,15 @@ const patientSchema = new mongoose.Schema({
     },
     referral: {
         type: String,
-
-    }
+    },
+    bloodType:{
+        type: String,
+        enum: ['A+', 'A-', 'AB+', 'AB-', 'B+', 'B-', 'O+', 'O-'],
+        required: true
+    },
+    medicalHistory:[
+        String
+    ]
 })
 
 patientSchema.methods.formatDate = function (dateProperty) {
