@@ -19,32 +19,51 @@
                 <form action="/patient/modify/<%= patient._id %>" method="post">
                     <div class="user-details">
 
-                        <div class="input-box">
+                        <!-- NEW FT : FULL NAME -->
+                        <div class="input-box1">
                             <span class="details">Last Name</span>
                             <input type="text" value="<%= patient.lastName %>" name="lastName" autocomplete="off"
                                 required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="input-box1">
                             <span class="details">First Name</span>
                             <input type="text" value="<%= patient.firstName %>" name="firstName" autocomplete="off"
                                 required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="input-box1">
                             <span class="details">Middle Name</span>
                             <input type="text" value="<%= patient.middleName %>" name="middleName" autocomplete="off"
                                 required>
                         </div>
 
                         <div class="input-box">
-                            <label for="gender" class="details">Gender</label>
+                            <label for="gender" class="details">Sex</label>
                             <select name="gender" id="opt">
                                 <option value="<%= patient.gender %>" selected disabled hidden>
                                     <%= patient.gender %>
                                 </option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
+                            </select>
+                        </div>
+
+                        <!-- NEW FT : BLOODTYPE -->
+                        <div class="input-box">
+                            <label for="bloodtype" class="details">Blood Type</label>
+                            <select name="gender" id="opt">
+                                <option value="<%= patient.gender %>" selected disabled hidden>
+                                    <%= patient.bloodtype %>
+                                </option>
+                                <option value="Female">A+</option>
+                                <option value="Male">A-</option>
+                                <option value="Female">AB+</option>
+                                <option value="Male">AB-</option>
+                                <option value="Female">B+</option>
+                                <option value="Male">B-</option>
+                                <option value="Female">O+</option>
+                                <option value="Male">O-</option>
                             </select>
                         </div>
 
@@ -73,10 +92,27 @@
                                 required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="input-box2">
                             <span class="details">Referred by</span>
                             <input type="text" value="<%= patient.referral %>" name="referral" autocomplete="off"
                                 required>
+                        </div>
+
+                        <!-- NEW FT : MEDICAL HISTORY -->
+                        <div class="input-box2">
+                            <span class="details">Medical History</span>
+                            <br>
+                            <!-- ADD LOOP HERE -->
+                            <% for (let finding of subjective) { %>
+                                <input type="text" id="subjective" name="subjective" class="subjective" autocomplete="off" value="<%= finding %>" required>
+                              <% } %>                                                                                     
+                            <div id="subjCont"></div>
+                            <div class="plan">
+                                <button id="subjBtn" class="btn" type="button" id="plus"><i
+                                        class="fa-solid fa-circle-plus"></i></button>
+                                <button id="subjMinus" class="btn" type="button"><i
+                                        class="fa-solid fa-circle-minus"></i></button>
+                            </div>
                         </div>
 
                     </div>

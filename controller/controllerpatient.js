@@ -54,25 +54,30 @@ const controllerPatient = {
 
     editPatient: async (req, res) => {
         if (req.session.username) {
-            const patientId = req.params.patientId;
-
-            Patient.find({ _id: patientId }, function (err, result) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.render('patient/editPatient', {
-                        patient: result[0],
-                        types
-                    });
-                }
-            });
-        }
-        else {
-            message = 'Login to proceed.';
-            console.log('Login to proceed.');
-            res.redirect('/user/login');
+          const patientId = req.params.patientId;
+          const currPatient = await Patient.findOne({ _id: patientId });
+      
+          Patient.find({ _id: patientId }, function (err, result) {
+            if (err) {
+              console.log(err);
+            } else {
+              const subjective = currPatient.subjective || []; // Ensure subjective is an array
+              const subjectiveArray = Array.isArray(subjective) ? subjective : [subjective]; // Convert to array if not already
+              res.render('patient/editPatient', {
+                currPatient: currPatient,
+                patient: result[0],
+                types,
+                subjective: subjectiveArray // Pass subjective as an array to the template
+              });
+            }
+          });
+        } else {
+          message = 'Login to proceed.';
+          console.log('Login to proceed.');
+          res.redirect('/user/login');
         }
     },
+      
 
     //Post the modified patient data into the DB
     modifyPatient: async (req, res) => {

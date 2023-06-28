@@ -48,6 +48,8 @@
           <li><a href="#" class="letter-link" data-letter="<%= letter %>"><%= letter %></a></li>
         <% }); %>
       </ul>
+
+    <br>
   
       <!-- Sort patients by last name -->
       <% patients.sort((a, b) => a.lastName.localeCompare(b.lastName)); %>
@@ -120,6 +122,9 @@
     </script>
   </div>
   
+  <!-- note to self: fix js on top put on separate file -->
+  <!-- add back to top button -->
+
   <!-- JS Script -->
   <script type="text/javascript" src="/js/home.js"></script>
 </body>

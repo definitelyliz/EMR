@@ -52,18 +52,15 @@
                                 <h3>
                                     <%= patient.lastName %>, <%= patient.firstName %>
                                             <%= patient.middleName.charAt(0) %>.
+
                                                 <div class="edit">
                                                     <!-- NEW FT : EDIT AND DELETE BUTTONS -->
-                                                    <!-- DELETE MODAL -->
                                                     <div class="popup-position" id="contact-popup">
-                                                        <button onclick="window.location.href='/patient/delete/<%= patient._id %>'" class="editdemo burger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
+                                                    <!-- DELETE MODAL -->
+                                                        <i class="fas fa-trash-alt" id="delete-icon"></i>
                                                         <!--%- include('./partials/deleteModal'); %-->
-                                                    </div>
                                                     
                                                     <!-- EDIT MODAL -->
-                                                    <div class="popup-position" id="contact-popup">
                                                         <button onclick="window.location.href='/patient/edit/<%= patient._id %>'" class="editdemo burger">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
@@ -124,12 +121,11 @@
                                                 <div class="edit">
 
                                                     <!-- PRINT MODAL -->
-                                                    <div class="popup-position" id="contact-popup">        
+                                                    <!--<div class="popup-position" id="contact-popup">        
                                                         <button onclick="window.location.href='/patient/<%= patient._id %>/printConsultation/<%= currentConsult._id %>'" class="editdemo burger">
                                                             <i class="fa fa-print"></i>
                                                         </button>
-                                                        <!--%- include('./partials/deleteModal'); %-->
-                                                    </div>
+                                                    </div>-->
 
                                                     <!-- DELETE MODAL -->
                                                     <div class="popup-position" id="contact-popup">        
@@ -137,10 +133,8 @@
                                                             <i class="fa fa-trash"></i>
                                                         </button>
                                                         <!--%- include('./partials/deleteModal'); %-->
-                                                    </div>
                                                     
                                                     <!-- EDIT MODAL -->
-                                                    <div class="popup-position" id="contact-popup">
                                                         <button onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'" class="editdemo burger">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
@@ -381,6 +375,19 @@
                                     </div>
                                 </form>
 
+                                <div id="delete-modal" class="modal">
+                                    <div class="modal-content">
+                                      <span class="close">&times;</span>
+                                      <br>
+                                      <p>Are you sure you want to delete this profile?
+                                        <br>
+                                         Note: You cannot reverse this action.
+                                      </p>
+                                      <button id="confirm-delete">Delete</button>
+                                    </div>
+                                </div>
+                                  
+
                                 <!-- JS Script -->
                                 <script type="text/javascript" src="/js/home.js"></script>
                                 <!--JS SCRIPT FOR DROPDOWN-->
@@ -423,10 +430,36 @@
                                                                 //     }
                                                                 // }
                                 </script>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                    const deleteIcon = document.getElementById('delete-icon');
+                                    const deleteModal = document.getElementById('delete-modal');
+                                    const closeModal = document.getElementsByClassName('close')[0];
+                                    const confirmDeleteButton = document.getElementById('confirm-delete');
+                                
+                                    deleteIcon.addEventListener('click', function () {
+                                        deleteModal.style.display = 'block';
+                                    });
+                                
+                                    closeModal.addEventListener('click', function () {
+                                        deleteModal.style.display = 'none';
+                                    });
+                                
+                                    confirmDeleteButton.addEventListener('click', function () {
+                                        // Handle delete confirmation here
+                                        // You can redirect to a delete route or perform any other action
+                                        // For example:
+                                        // window.location.href = '/delete-profile';
+                                        window.location.href = '/patient/delete/<%= patient._id %>';
+                                    });
+                                    });
+                                </script>
+  
 </body>
 
 <script src="/js/patientRecord.js"></script>
-<script src="js/contact_modal.js"></script>
-
 
 </html>
+
+<div class="popup-position" id="contact-popup">
