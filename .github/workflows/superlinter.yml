@@ -12,7 +12,12 @@ jobs:
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
+      - name: Run linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+            github_token: ${{ secrets.github_token }}
+            auto_fix: ${{ github.event_name == 'push' }}  
         env:
           DEFAULT_BRANCH: TEST-SCRIPTS-NO-DESIGN-YET
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          auto_fix: ${{ github.event_name == 'pull_request' }}
+ 
