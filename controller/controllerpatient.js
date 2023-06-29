@@ -32,20 +32,20 @@ const controllerPatient = {
             data.middleName = capitalizeFirstLetter(data.middleName)
             data.bloodType = req.body.bloodType;
 
-            console.log(req.body.subjective);
+            console.log(req.body.medicalHistory);
 
             var planData = [];
 
-            var multipleData = Array.isArray(req.body.subjective);
+            var multipleData = Array.isArray(req.body.medicalHistory);
 
             if (multipleData) {
-                for (let i = 0; i < req.body.subjective.length; i++) {
-                    tempData = req.body.subjective[i];
+                for (let i = 0; i < req.body.medicalHistory.length; i++) {
+                    tempData = req.body.medicalHistory[i];
                     planData.push(tempData);
                 }
             }
             else {
-                tempData =  req.body.subjective;
+                tempData =  req.body.medicalHistory;
                 planData.push(tempData);
             }
 
@@ -88,13 +88,13 @@ const controllerPatient = {
             if (err) {
               console.log(err);
             } else {
-              const subjective = currPatient.subjective || []; // Ensure subjective is an array
-              const subjectiveArray = Array.isArray(subjective) ? subjective : [subjective]; // Convert to array if not already
+              const medicalHistory = currPatient.medicalHistory || []; // Ensure medicalHistory is an array
+              const medicalHistoryArray = Array.isArray(medicalHistory) ? medicalHistory : [medicalHistory]; // Convert to array if not already
               res.render('patient/editPatient', {
                 currPatient: currPatient,
                 patient: result[0],
                 types,
-                subjective: subjectiveArray // Pass subjective as an array to the template
+                medicalHistory: medicalHistoryArray // Pass medicalHistory as an array to the template
               });
             }
           });

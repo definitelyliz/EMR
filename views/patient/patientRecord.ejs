@@ -128,8 +128,10 @@
                                                     </div>-->
 
                                                     <!-- DELETE MODAL -->
-                                                    <div class="popup-position" id="contact-popup">   
-                                                        <i class="fas fa-trash-alt" id="delete-iconConsultation"></i>     
+                                                    <div class="popup-position" id="contact-popup">        
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
                                                         <!--%- include('./partials/deleteModal'); %-->
                                                     
                                                     <!-- EDIT MODAL -->
@@ -450,31 +452,6 @@
                                         // For example:
                                         // window.location.href = '/delete-profile';
                                         window.location.href = '/patient/delete/<%= patient._id %>';
-                                    });
-                                    });
-                                </script>
-
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                    const deleteIcon = document.getElementById('delete-iconConsultation');
-                                    const deleteModal = document.getElementById('delete-modal');
-                                    const closeModal = document.getElementsByClassName('close')[0];
-                                    const confirmDeleteButton = document.getElementById('confirm-delete');
-                                
-                                    deleteIcon.addEventListener('click', function () {
-                                        deleteModal.style.display = 'block';
-                                    });
-                                
-                                    closeModal.addEventListener('click', function () {
-                                        deleteModal.style.display = 'none';
-                                    });
-                                
-                                    confirmDeleteButton.addEventListener('click', function () {
-                                        // Handle delete confirmation here
-                                        // You can redirect to a delete route or perform any other action
-                                        // For example:
-                                        // window.location.href = '/delete-profile';
-                                        window.location.href = '/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>';
                                     });
                                     });
                                 </script>

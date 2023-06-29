@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <div class="title">Add Patient</div>
-        <form action="/patient" method="post" autocomplete="off">
+        <form action="/patient" method="post" autocomplete="off" id="addPatientPage">
             <div class="user-details">
 
                 <!-- NEW FT : FULL NAME -->
@@ -89,12 +89,12 @@
                     <span class="details">Medical History</span>
                     <br>
                     <!-- ADD LOOP HERE -->
-                    <input type="text" id="subjective" name="subjective" class="subjective" autocomplete="off" required>
-                    <div id="subjCont"></div>
+                    <input type="text" id="medicalHistory" name="medicalHistory" class="medicalHistory" autocomplete="off" required>
+                    <div id="medHisCont"></div>
                     <div class="plan">
-                        <button id="subjBtn" class="btn" type="button" id="plus"><i
+                        <button id="medHisBtn" class="btn" type="button" id="plus"><i
                                 class="fa-solid fa-circle-plus"></i></button>
-                        <button id="subjMinus" class="btn" type="button"><i
+                        <button id="medHisMinus" class="btn" type="button"><i
                                 class="fa-solid fa-circle-minus"></i></button>
                     </div>
                 </div>

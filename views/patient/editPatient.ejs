@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Patient</title>
     <link rel="stylesheet" href="/css/add-patient.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,7 +18,7 @@
 
             <div class="container">
                 <div class="title">Edit Patient</div>
-                <form action="/patient/modify/<%= patient._id %>" method="post">
+                <form action="/patient/modify/<%= patient._id %>" method="post" id="editPatientPage">
                     <div class="user-details">
 
                         <!-- NEW FT : FULL NAME -->
@@ -53,6 +55,9 @@
                         <div class="input-box">
                             <label for="bloodType" class="details">Blood Type</label>
                             <select name="bloodType">
+                                <option value="<%= patient.bloodType %>" selected disabled hidden>
+                                    <%= patient.bloodType %>
+                                </option>
                                 <option value="A+">A+</option>
                                 <option value="A-">A-</option>
                                 <option value="AB+">AB+</option>
@@ -100,14 +105,14 @@
                             <span class="details">Medical History</span>
                             <br>
                             <!-- ADD LOOP HERE -->
-                            <% for (let finding of subjective) { %>
-                                <input type="text" id="subjective" name="subjective" class="subjective" autocomplete="off" value="<%= finding %>" required>
-                              <% } %>                                                                                     
-                            <div id="subjCont"></div>
+                            <% for (let finding of medicalHistory) { %>
+                                <input type="text" id="medicalHistory" name="medicalHistory" class="medicalHistory" value="<%= finding %>" required>
+                            <% } %>                                                                                     
+                            <div id="medHisCont"></div>
                             <div class="plan">
-                                <button id="subjBtn" class="btn" type="button" id="plus"><i
+                                <button id="medHisBtn" class="btn" type="button" id="plus"><i
                                         class="fa-solid fa-circle-plus"></i></button>
-                                <button id="subjMinus" class="btn" type="button"><i
+                                <button id="medHisMinus" class="btn" type="button"><i
                                         class="fa-solid fa-circle-minus"></i></button>
                             </div>
                         </div>
