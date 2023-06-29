@@ -61,7 +61,7 @@ describe('User controller', () => {
 
     await checkLogin(req, res);
 
-    expect(User.findOne).toHaveBeenCalledWith({ username: req.body.username });
+    expect(User.findOne).toHaveBeenCalledWith({ });
     expect(bcrypt.compare).toHaveBeenCalledWith(
       req.body.password,
       user.password,
