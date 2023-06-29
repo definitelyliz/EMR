@@ -42,8 +42,15 @@ const patientSchema = new mongoose.Schema({
     },
     referral: {
         type: String,
-
-    }
+    },
+    bloodType:{
+        type: String,
+        enum: ['A+', 'A-', 'AB+', 'AB-', 'B+', 'B-', 'O+', 'O-'],
+        required: true
+    },
+    medicalHistory:[
+        String
+    ]
 })
 
 patientSchema.methods.formatDate = function (dateProperty) {
@@ -63,7 +70,7 @@ patientSchema.methods.formatDate = function (dateProperty) {
 }
 
 patientSchema.index({ lastName: 'text', firstName: 'text', type: 'text' })
-const Patient = mongoose.model('Patient', patientSchema);
+const Patient = mongoose.model('patient', patientSchema);
 Patient.createIndexes();
 
 module.exports = Patient;

@@ -42,3 +42,20 @@ h3 {
     font-style: italic;
     padding-right: 3px;
 }
+
+
+.alphabet, a:link, a:visited, a:hover {
+    list-style-type: none!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    color: #26325D;
+}
+
+.alphabet li {
+    margin:10px;
+    display: inline!important;
+    text-align: center;
+    width:100%;
+    font-size: 25px;
+    white-space: nowrap;
+}

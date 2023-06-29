@@ -1,7 +1,7 @@
 var User = require('../model/user');
 //var Post = require('../model/post');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = 9;
 
 
 const controllerUser = {
@@ -21,35 +21,49 @@ const controllerUser = {
         }
     },
 
-
+    addUser: async (req, res) => {
+        user = User.insert
+    },
     checkLogin: async (req, res) => {
-        message = '';
-        var check;
-        var data = req.query;
-        var user = await User.findOne({ username: req.body.username })
-            .then(async (check) => {
-                var user = await User.findOne({ username: req.body.username });
-                if (user.username === req.body.username) {
-
-                    bcrypt.compare(req.body.password, user.password, async function (err, isMatch) {
-                        if (!isMatch) {
-                            var message = true;
-                            res.render('user/login', { message });
-                        }
-                        else {
-                            req.session.username = req.body.username;
-                            var currentUser = await User.findOne({ 'username': req.session.username });
-                            res.redirect('/');
-                        }
-                    })
-                }
-            })
-            .catch(() => {
-                message = 'No user found.';
-                console.log('No user found');
-                var message = true;
-                res.render('user/login', { message });
+        try {
+            const data = req.query;
+            const user = await User.findOne({ username: req.body.username });
+          
+            if (!user) {
+              // No user found
+              const message = true;
+              console.log('No user found');
+              return res.render('user/login', { message });
+            }
+        
+            bcrypt.compare(req.body.password, user.password, async function (err, isMatch) {
+              if (err) {
+                // Handle error
+                const message = true;
+                console.error('Error comparing passwords:', err);
+                return  res.render('user/login', { message });
+              }
+        
+              if (!isMatch) {
+                // Password does not match
+                const message = true;
+                return res.render('user/login', { message });
+              }
+              
+              // Password matches
+        
+              req.session.username = req.body.username;
+              console.log(req.session.username);
+              console.log('asashfalsihga; gjapf');
+              const currentUser = await User.findOne({ username: req.session.username });
+              return res.redirect('/');
             });
+          } catch (err) {
+            const message = true;
+            console.error('Error checking login:', err);
+            return res.render('user/login', { message });
+          }
+        
     },
 
     userPage: async (req, res) => {
@@ -73,7 +87,6 @@ const controllerUser = {
     signup: async (req, res) => {
         res.render('user/signup');
     },
-
 
 
     addUser: async (req, res) => {
@@ -214,8 +227,6 @@ const controllerUser = {
                 res.redirect('/user/signup');
             })
     },
-
-
 
 }
 
