@@ -32,23 +32,22 @@ const controllerPatient = {
             data.middleName = capitalizeFirstLetter(data.middleName)
             data.bloodType = req.body.bloodType;
 
-            console.log(req.body.medicalHistory);
+            console.log(req.body.subjective);
 
             var planData = [];
 
-            var multipleData = Array.isArray(req.body.medicalHistory);
+            var multipleData = Array.isArray(req.body.subjective);
 
             if (multipleData) {
-                for (let i = 0; i < req.body.medicalHistory.length; i++) {
-                    tempData = req.body.medicalHistory[i];
+                for (let i = 0; i < req.body.subjective.length; i++) {
+                    tempData = req.body.subjective[i];
                     planData.push(tempData);
                 }
             }
             else {
-                tempData =  req.body.medicalHistory;
+                tempData =  req.body.subjective;
                 planData.push(tempData);
             }
-
 
             var newData = new Patient(data);
             for (let i = 0; i < planData.length; i++) {
@@ -56,17 +55,33 @@ const controllerPatient = {
                 console.log(planData[i]);
             }
 
-            await newData.save()
+
+                var dateObj = new Date();
+                var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                var day = dateObj.getUTCDate();
+                var year = dateObj.getUTCFullYear();
+
+                todayDate = year + "-" + month + "-" + day;
+            
+            if(!isNaN(req.body.contactNumber) && req.body.birthday <= todayDate)
+            {
+                await newData.save()
                 .then(async () => {
                     res.redirect('/');
                     console.log(newData);
                 })
                 .catch((err) => {
-                    message = err;
+                    msg = err;
+                    res.redirect('/patient/new');
+                    console.log('bruh');         
+                })
+            }
+                else{
+                    //add indication to user the cause of error 
                     res.redirect('/patient/new');
                     console.log('bruh');
-                    console.log(newData);
-                })
+                }
+            
 
 
 
@@ -88,13 +103,13 @@ const controllerPatient = {
             if (err) {
               console.log(err);
             } else {
-              const medicalHistory = currPatient.medicalHistory || []; // Ensure medicalHistory is an array
-              const medicalHistoryArray = Array.isArray(medicalHistory) ? medicalHistory : [medicalHistory]; // Convert to array if not already
+              const subjective = currPatient.subjective || []; // Ensure subjective is an array
+              const subjectiveArray = Array.isArray(subjective) ? subjective : [subjective]; // Convert to array if not already
               res.render('patient/editPatient', {
                 currPatient: currPatient,
                 patient: result[0],
                 types,
-                medicalHistory: medicalHistoryArray // Pass medicalHistory as an array to the template
+                subjective: subjectiveArray // Pass subjective as an array to the template
               });
             }
           });
@@ -226,7 +241,7 @@ const controllerPatient = {
         }
         else {
             message = 'Login to proceed.';
-            console.log('Login to proceed.');
+            console.log('Login to proceed.');       
             res.redirect('/user/login');
         }
     },

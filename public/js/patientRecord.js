@@ -35,5 +35,16 @@ function showConfirmBox(consultID, fileID) {
 function closeConfirmBox() {
     var elem = document.getElementById("confirm-box");
     elem.remove();
+
+
 }
+      
+                                                                    
+                                            
+                                                                
+                                                            
+                                                                
+                                                            
+                                                                       
+                                                
 

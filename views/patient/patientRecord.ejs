@@ -106,10 +106,15 @@
                             </h3>
                         </div>
                         <!--JS CODE to generate consultation instances-->
+                        <!--add a counter to dynamically change id values of the icon-->
+                        
+                        
+                        
                         <% for (let currentConsult of consultations) { %>
                             <div id="consultation">
                                 <div class="consult-instance">
                                     <div class="date">
+                                        
                                         <!--REPLACE WITH VARIABLES-->
                                         <%= currentConsult.formatDate(currentConsult.date)%>
                                             <div class="edit">
@@ -126,12 +131,44 @@
                                                             <i class="fa fa-print"></i>
                                                         </button>
                                                     </div>-->
-
+                                                
                                                     <!-- DELETE MODAL -->
+                                                    
                                                     <div class="popup-position" id="contact-popup">        
-                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'" class="editdemo burger">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
+                                                        <!--<button onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'" class="editdemo burger">-->
+                                                            <i class="fa fa-trash" id="delete-iconConsultation<%= consultations.indexOf(currentConsult)%>" title="delete-iconConsultation<%= consultations.indexOf(currentConsult)%>"></i>
+                                                            
+                                                            <script>
+                                                                document.addEventListener('DOMContentLoaded', function () {
+                                                                const deleteIcon = document.getElementById('delete-iconConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                                const deleteModal = document.getElementById('delete-modalConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                                const closeModal = document.getElementsByClassName('closeConsult<%= consultations.indexOf(currentConsult)%>')[0];
+                                                                const confirmDeleteButton = document.getElementById('confirm-deleteConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                            
+                                                                deleteIcon.addEventListener('click', function () {
+                                                                    deleteModal.style.display = 'block';
+                                                                });
+                                                            
+                                                                closeModal.addEventListener('click', function () {
+                                                                    deleteModal.style.display = 'none';
+                                                                });
+                                                            
+                                                                confirmDeleteButton.addEventListener('click', function () {
+                                                                    // Handle delete confirmation here
+                                                                    // You can redirect to a delete route or perform any other action
+                                                                    // For example:
+                                                                    // window.location.href = '/delete-profile';
+                                                                        window.location.href = '/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>';
+                                                                });
+                                                                });
+
+                                                                
+                                                            </script>
+                                                    
+                                                    
+                                                            
+                                                           
+                                                        <!--</button>-->
                                                         <!--%- include('./partials/deleteModal'); %-->
                                                     
                                                     <!-- EDIT MODAL -->
@@ -386,7 +423,21 @@
                                       <button id="confirm-delete">Delete</button>
                                     </div>
                                 </div>
-                                  
+
+                                <% for(let i of consultations) { %>
+                                    <div id="delete-modalConsultation<%= consultations.indexOf(i)%>" class="modal">
+                                        <div class="modal-content">
+                                        <span class="closeConsult<%= consultations.indexOf(i)%>">&times;</span>
+                                        <br>
+                                        <p>Are you sure you want to delete this profile?
+                                            <br>
+                                            Note: You cannot reverse this action.
+                                        </p>
+                                        <button id="confirm-deleteConsultation<%= consultations.indexOf(i)%>" class="confirm-deleteConsultation" >Delete</button>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                        
 
                                 <!-- JS Script -->
                                 <script type="text/javascript" src="/js/home.js"></script>
@@ -451,10 +502,16 @@
                                         // You can redirect to a delete route or perform any other action
                                         // For example:
                                         // window.location.href = '/delete-profile';
-                                        window.location.href = '/patient/delete/<%= patient._id %>';
+                                            window.location.href = '/patient/delete/<%= patient._id %>';
                                     });
                                     });
                                 </script>
+
+                            
+    
+        
+
+
   
 </body>
 
