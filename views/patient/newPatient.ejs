@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,6 +9,12 @@
     <link rel="stylesheet" href="/css/add-patient.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
+    <style>
+        .scrollable-section {
+            height: 150px; /* Adjust the height as per your requirements */
+            overflow-y: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -88,9 +95,11 @@
                 <div class="input-box2">
                     <span class="details">Medical History</span>
                     <br>
-                    <!-- ADD LOOP HERE -->
-                    <input type="text" id="medicalHistory" name="medicalHistory" class="medicalHistory" autocomplete="off" required>
-                    <div id="medHisCont"></div>
+                    <div class="scrollable-section"> <!-- Added "scrollable-section" class here -->
+                        <!-- ADD LOOP HERE -->
+                        <input type="text" id="medicalHistory" name="medicalHistory" class="medicalHistory" autocomplete="off" required>
+                        <div id="medHisCont"></div>
+                    </div>
                     <div class="plan">
                         <button id="medHisBtn" class="btn" type="button" id="plus"><i
                                 class="fa-solid fa-circle-plus"></i></button>
@@ -110,14 +119,10 @@
                 <input type="submit" id="sub2" value="CANCEL">
             </div>
         </form>
-
-
-        </form>
-
     </div>
 
-</body>
+    <script src="/js/editPatient.js"></script>
 
-<script src="/js/editPatient.js"></script>
+</body>
 
 </html>

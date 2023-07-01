@@ -89,3 +89,10 @@ a:link, a:visited {
     border: none;
     color: white;
 }
+
+.wrapper span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
