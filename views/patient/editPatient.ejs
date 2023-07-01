@@ -112,7 +112,7 @@
                             <br>
                             <div class = "scrollable-section"> <!-- Added "scrollable-section" class here -->
                                 <!-- ADD LOOP HERE -->
-                                <% for (let finding of medicalHistory) { %>
+                                <% for (let finding of patient.medicalHistory) { %>
                                     <input type="text" id="medicalHistory" name="medicalHistory" class="medicalHistory" value="<%= finding %>" required>
                                 <% } %>                                                                                     
                                 <div id="medHisCont"></div>
