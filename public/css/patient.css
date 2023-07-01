@@ -305,8 +305,7 @@ form #sub {
     padding: 20px;
 }
 
-
-.close {
+[class*="close"] {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -318,6 +317,8 @@ form #sub {
     text-align: center;
     float: right;
 }
+
+
 
 .top {
     background-color: #287EFC;
@@ -387,8 +388,8 @@ form #sub {
     cursor: pointer;
   }
   
-  .close:hover,
-  .close:focus {
+  [class*="close"]:hover,
+  [class*="close"]:focus {
     color: #808080;
     text-decoration: none;
     cursor: pointer;
@@ -426,3 +427,19 @@ form #sub {
     padding: 0 10px;
     border: none;
 }
+
+.confirm-deleteConsultation{
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    height: 35px;
+  }
+
+  .confirm-deleteConsultation:hover{
+    background-color: #c82333;
+  }

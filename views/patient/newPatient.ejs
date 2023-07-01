@@ -26,8 +26,7 @@
                 <!-- NEW FT : FULL NAME -->
                 <div class="input-box1">
                     <span class="details">Last Name</span>
-                    <input type="text" name="lastName" autocomplete="off" readonly
-                        onfocus="this.removeAttribute('readonly');" required>
+                    <input type="text" name="lastName" autocomplete="off" required>
                 </div>
 
                 <div class="input-box1">
@@ -71,13 +70,24 @@
                 <div class="input-box">
                     <span class="details">Contact Details</span>
                     <input type="text" id="contactNumber" name="contactNumber" autocomplete="off" required
-                        minlength="11" maxlength="11">
+                         onkeypress="return onlyNumberKey(event)" minlength="11" maxlength="11">
                     <span id="error"></span>
                 </div>
 
+                <script>
+                    function onlyNumberKey(evt) {
+                         
+                        // Only ASCII character in that range allowed
+                        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+                        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                            return false;
+                        return true;
+                    }
+                </script>
+
                 <div class="input-box">
                     <span class="details">Birthday</span>
-                    <input type="text" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" name="birthday" required>
+                    <input type="date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" name="birthday" required>
                 </div>
 
                 <div class="input-box">
