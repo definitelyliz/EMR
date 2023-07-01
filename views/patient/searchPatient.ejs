@@ -27,67 +27,108 @@
     <div class="fixed">
         <!-- HEADER PARTIAL -->
         <%- include('../partials/header') %>
-            <!-- END HEADER PARTIAL -->
+        <!-- END HEADER PARTIAL -->
     </div>
+
+    <br>
+    <br>
+    <br>
 
     <div id="page">
         <div id="patients">
-            <!--INSERT FOR LOOP TO GENERATE LETTERS OF ALPHABET-->
-            <!--I'll put a sample for A-->
-            <!--INSERT NESTED LOOP TO GENERATE THE PATIENTS UNDER THE LETTER-->
-            <!-- For Loop to Print A-Z -->
-            <% for (var i=65; i <=90; i++ ) { %>
-                <br />
-                <%= String.fromCharCode(i) %>
+            <ul class="alphabet">
+                <% const letters = []; %>
+                <!-- For Loop to Print A-Z -->
+                <% for (var i = 65; i <= 90; i++) { %>
+                  <% letters.push(String.fromCharCode(i)); %>
+                <% } %>
+                <% letters.sort(); %>
+                    <li><a href="#" class="letter-link" data-letter="ALL">ALL</a></li>
+                <% letters.forEach(letter => { %>
+                      <li><a href="#" class="letter-link" data-letter="<%= letter %>"><%= letter %></a></li>
+                <% }); %>
+            </ul>
 
-                    <!-- For Loop to Print Patients -->
-                    <% for (let patient of searchPatients) { %>
+            <br>
 
-                        <!-- Calculating Age -->
-                        <%const now=new Date();%>
-                            <%const diff=Math.abs(now - patient.birthday );%>
-                                <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
+            <!-- Sort patients by last name -->
+            <% searchPatients.sort((a, b) => a.lastName.localeCompare(b.lastName)); %>
 
-                                    <!-- Determining Type of Consult for div tag -->
-                                    <%var consult="" %>
-                                        <%if (patient.type==="Surgical" ) {%>
-                                            <%consult="surgical" ; }%>
-                                                <%if (patient.type==="Purely Medical" ) {%>
-                                                    <%consult="medical" ; }%>
-                                                        <%if (patient.type==="Checkup" ) {%>
-                                                            <%consult="checkup" ; }%>
+            <% for (let patient of searchPatients) { %>
 
-                                                                <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){
-                                                                    %>
-                                                                    <!-- <div class="patient-instance <%=consult %>"> REMOVED class changes depending on the latest consult -->
-                                                                    <button
-                                                                        onclick="window.location.href='patient/<%= patient._id %>'"
-                                                                        class="patient-instance">
-                                                                        <div class="name">
-                                                                            <!--lastName, firstName middleInitial(just the initial).-->
+                <!-- Calculating Age -->
+                <% const now = new Date(); %>
+                <% const diff = Math.abs(now - patient.birthday); %>
+                <% const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
 
-                                                                            <%= patient.lastName %>, <%=
-                                                                                    patient.firstName %>
-                                                                                    <%= patient.middleName.charAt(0) %>.
-                                                                        </div>
-                                                                        <div class="age">
-                                                                            <p class="age" id="age">Age: <%=age%>
-                                                                            </p>
-                                                                        </div>
-                                                                    </button>
-                                                                    <% } %>
-                                                                        <% } %>
-                                                                            <% } %>
+                <!-- Determining Type of Consult for div tag -->
+                <% var consult = ""; %>
+                <% if (patient.type === "Surgical") { %>
+                    <% consult = "surgical"; %>
+                <% } else if (patient.type === "Purely Medical") { %>
+                    <% consult = "medical"; %>
+                <% } else if (patient.type === "Checkup") { %>
+                    <% consult = "checkup"; %>
+                <% } %>
 
+                <button onclick="window.location.href='patient/<%= patient._id %>'" class="patient-instance">
+                    <div class="name">
+                      <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
+                    </div>
+                    <div class="age">
+                      <p class="age" id="age">Age: <%= age %></p>
+                    </div>
+                </button>
+
+            <% } %>
         </div>
-    </div>
-    <div id="button">
-        <button onclick="window.location.href='/patient/new'" class="square">
-            <div class="left"><i class="fa fa-plus"></i></div>
-            <div class="right">Patient</div>
-        </button>
-    </div>
-    </div>
+
+            <div id="button">
+                <button onclick="window.location.href='/patient/new'" class="square">
+                  <div class="left"><i class="fa fa-plus"></i></div>
+                  <div class="right">Patient</div>
+                </button>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+            <script>
+                const letterLinks = document.querySelectorAll('.letter-link');
+                const patients = document.querySelectorAll('.patient-instance');
+            
+                letterLinks.forEach(letterLink => {
+                  letterLink.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const selectedLetter = event.target.dataset.letter;
+            
+                    patients.forEach(patient => {
+                      const lastName = patient.querySelector('.name').textContent.split(',')[0].trim();
+            
+                      if (selectedLetter === 'ALL' || lastName.charAt(0).toUpperCase() === selectedLetter) {
+                        patient.style.display = 'block';
+                      } else {
+                        patient.style.display = 'none';
+                      }
+                    });
+                  });
+                });
+            
+                // Show all patients when "ALL" link is clicked
+                const allLink = document.querySelector('.letter-link[data-letter="ALL"]');
+                allLink.addEventListener('click', (event) => {
+                  event.preventDefault();
+            
+                  patients.forEach(patient => {
+                    patient.style.display = 'block';
+                  });
+                });
+            </script>
+        </div>
+
+    <!-- note to self: fix js on top put on separate file -->
+    <!-- add back to top button -->
 
     <!-- JS Script -->
     <script type="text/javascript" src="/js/home.js"></script>

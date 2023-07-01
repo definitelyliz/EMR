@@ -411,8 +411,24 @@ form #sub {
   #confirm-delete:hover {
     background-color: #c82333;
   }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+}
 
-  .confirm-deleteConsultation{
+#search {
+    height: 30px;
+    padding: 0 10px;
+}
+
+#search-button {
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+}
+
+.confirm-deleteConsultation{
     background-color: #dc3545;
     color: white;
     padding: 10px 20px;
@@ -427,4 +443,3 @@ form #sub {
   .confirm-deleteConsultation:hover{
     background-color: #c82333;
   }
-  
