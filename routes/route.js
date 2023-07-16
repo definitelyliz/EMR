@@ -39,6 +39,7 @@ const upload = multer({
 app.get('/', controllerHome.goHome);
 //app.get('/about', controllerhome.goAbout)
 
+
 //Login and signup section
 app.get('/user/login', controllerUser.login);
 app.post('/user', controllerUser.checkLogin);
