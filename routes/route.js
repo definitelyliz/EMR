@@ -11,17 +11,17 @@ const controllerConsultation = require('../controller/controllerconsultation.js'
 
 
 const multerStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: (_req, file, cb) => {
         cb(null, "./public");
     },
-    filename: (req, file, cb) => {
+    filename: (_req, file, cb) => {
         const ext = file.mimetype.split("/")[1];
         cb(null, `files/${file.originalname}.${ext}`);
     },
 });
 
 // Multer Filter
-const multerFilter = (req, file, cb) => {
+const multerFilter = (_req, file, cb) => {
     if (file.mimetype.split("/")[1] === "pdf" || file.mimetype.split("/")[1] === "png" || file.mimetype.split("/")[1] === "jpeg" || file.mimetype.split("/")[1] === "mp4") {
         cb(null, true);
     } else {
@@ -48,6 +48,7 @@ app.get('/user/:username', controllerUser.userPage);
 app.get('/logout', controllerUser.logout);
 app.get('/user/:username/edit', controllerUser.editUser);
 app.post('/user/updateProfile', controllerUser.updateUser);
+//app.get('/user/securityQuestions', controllerUser.securityQuestions);
 // app.get('/user/relogin', controllerUser.relogin);
 
 //Records section

@@ -1,22 +1,51 @@
-let timer,
-    timeoutVal = 300;
-const contact = document.getElementById("contactNumber");
-const error = document.getElementById('error');
+// Buttons
+const medHisBtn = document.getElementById("medHisBtn");
+const medHisMinus = document.getElementById("medHisMinus");
+// Text inputs
+const medHisective = document.querySelector(".medicalHistory");
+// Ul div container
+const medHisCont = document.getElementById('medHisCont');
 
-// detects when the user is actively typing
-// triggers a check to see if the user is actually done typing
-contact.addEventListener('keyup', handleKeyUp);
+function medHisPush() {
+  const newInput = document.createElement('input');
+  newInput.setAttribute('type', 'text');
+  newInput.setAttribute('class', 'medicalHistory');
+  newInput.setAttribute('name', 'medicalHistory');
+  newInput.setAttribute('autocomplete', 'off');
+  newInput.required = true;
 
-function handleKeyUp(e) {
-    window.clearTimeout(timer); // prevent errant multiple timeouts from being generated
-    timer = window.setTimeout(() => {
+  medHisCont.appendChild(newInput);
+}
 
-        if (isNaN(contact.value)) {
-            error.innerHTML = "<span style='color: red; '>" +
-                "Please enter a valid number</span>";
-        }
-        else {
-            error.innerHTML = "";
-        }
-    }, timeoutVal);
+function medHisPull() {
+  const elem = document.querySelectorAll(".medicalHistory");
+  const lastElem = elem[elem.length - 1];
+  if (elem.length > 1) {
+    lastElem.remove();
+  }
+}
+
+// Check if it's the add patient page
+if (document.getElementById("addPatientPage")) {
+  // Add patient page specific behavior
+  if (medHisBtn) {
+    medHisBtn.addEventListener("click", medHisPush);
+  }
+
+  if (medHisMinus) {
+    medHisMinus.addEventListener("click", medHisPull);
+  }
+} else if (document.getElementById("editPatientPage")) {
+  // Edit patient page specific behavior
+  // Customize the behavior for the edit patient page if needed
+  const medHisBtnEdit = document.getElementById("medHisBtn");
+  const medHisMinusEdit = document.getElementById("medHisMinus");
+
+  if (medHisBtnEdit) {
+    medHisBtnEdit.addEventListener("click", medHisPush);
+  }
+
+  if (medHisMinusEdit) {
+    medHisMinusEdit.addEventListener("click", medHisPull);
+  }
 }
