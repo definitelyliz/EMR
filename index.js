@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const bodyParser = require("body-parser");
 const nocache = require("nocache");
+pdf = require('express-pdf');
 
 
 if (process.env.STATUS === 'development') {
@@ -59,6 +60,12 @@ app.use(function (req, res, next) {
 
 app.use(nocache())
 
+app.use('/pdfFromHTML', function(req, res){
+    res.pdfFromHTML({
+        filename: 'generated.pdf',
+        html: path.resolve(__dirname, './template.html'),
+    });
+});
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
@@ -67,6 +74,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '/public')));
+
+
 
 
 app.listen(3000, () => {

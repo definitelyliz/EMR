@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+      }
+      
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .container {
+        display: flex;
+        justify-content: flex-end;
+       }
+
+      .content {
+          text-align: center;
+          color: black;
+      }
+      </style>
+    <title>Pdf Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body style="margin: 5%; padding: 0%;">
+
+  <h2 style="font-weight: 900; text-align: center;color: black;">Dr. Rafaela Flores, M.D., Ph.D., M.S.</h2>
+  <p style="text-align: center;">123 Maginhawa Street, Barangay Sikatuna, Quezon City, Metro Manila, PH<br/> 
+    rafaelaflores@gmaill.com | +63 987 420 6591 | (02) 8765-4321</p>
+
+  <hr style="height: 3px; border-width: 0; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0)"/>
+
+  <div class="row" style="color: black;">
+    <div class="column">
+      <p><strong>Name: </strong> <!-- data goes here --> <%= patient.lastName %>, <%= patient.firstName %>, <%= patient.middleName.charAt(0)%></p>
+      <p><strong>Address: </strong> <!-- data goes here --> <%= patient.address %></p>
+    </div>
+    <div class="column">
+      <p><strong>Age: </strong> <!-- data goes here --> 
+        <%const now=new Date();%>
+        <%const diff=Math.abs(now - patient.birthday );%>
+        <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %></p>
+      <p><strong>Sex: </strong> <!-- data goes here --> <%= patient.gender %></p>
+    </div>
+  </div>
+
+  <div align="right">
+    <p id="demo"></p>
+    <script>
+      const d = new Date();
+      document.getElementById("demo").innerHTML = d.toDateString();
+    </script>
+  </div>
+
+  <div>
+    <h5 style="font-weight: 700; color: black;">Medication</h5>
+    <!-- data goes here -->
+    <ul>
+      <% medications.forEach(function(item) { %>
+          <li><%= item %></li>
+      <% }); %>
+    </ul>
+    
+  </div>
+
+  <br>
+
+  <div>
+    <h5 style="font-weight: 700; color: black;">Laboratory</h5>
+    <!-- data goes here -->
+    <ul>
+        <% laboratory.forEach(function(item) { %>
+            <li><%= item %></li>
+        <% }); %>
+    </ul>
+    
+  </div>
+
+  <br>
+
+  <div>
+    <h5 style="font-weight: 700; color: black;">Notes</h5>
+    <!-- data goes here -->
+    <ul>
+        <% others.forEach(function(item) { %>
+            <li><%= item %></li>
+        <% }); %>
+    </ul>
+    
+  </div>
+
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="content">
+        <p><strong>Rafaela Flores, MD</strong>
+          <br>License # 8529731
+          <br>PTR # 6194285
+        </p>
+    </div>
+</div>
+
+
+  
+  <hr style="height: 3px; border-width: 0; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0)"/>
+
+  <p style="font-size: x-small; color: black; text-align: center;">eReseta by STSWENG GROUP 2</p>
+
+  
+</body>
+</html>

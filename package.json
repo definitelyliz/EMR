@@ -10,9 +10,6 @@
     "index": "nodemon index.js",
     "selenium-test": "selenium-side-runner selenium/patients.side"
   },
-
-
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -25,6 +22,7 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-pdf": "^1.2.2",
     "express-session": "^1.17.3",
     "jsdom": "^21.1.0",
     "method-override": "^3.0.0",
@@ -33,9 +31,9 @@
     "multer": "^1.4.5-lts.1",
     "nocache": "^3.0.4",
     "nodemon": "^2.0.22",
+    "selenium-side-runner": "4.0.0-alpha.52",
     "supertest": "^6.3.3",
-    "validator": "^13.9.0",
-    "selenium-side-runner": "4.0.0-alpha.52" 
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "jest": "^29.5.0",
