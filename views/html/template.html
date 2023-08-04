@@ -63,24 +63,31 @@
   <div>
     <h5 style="font-weight: 700; color: black;">Medication</h5>
     <!-- data goes here -->
-    <ul>
-      <% medications.forEach(function(item) { %>
-          <li><%= item %></li>
-      <% }); %>
-    </ul>
+    <% for(let i=0; i < currentConsult.plan.length; i++) { %>
+  <% if (currentConsult.plan[i].category=="Medications") {%>
+      <li class="circle">
+      <%= currentConsult.plan[i].description %>
+      </li>
+    <% } %>
+      <% } %>
     
   </div>
 
   <br>
 
+  <% for (let currentConsult of consultations) { %>
+    
+    <% } %>
   <div>
     <h5 style="font-weight: 700; color: black;">Laboratory</h5>
     <!-- data goes here -->
     <ul>
-        <% laboratory.forEach(function(item) { %>
-            <li><%= item %></li>
-        <% }); %>
-    </ul>
+  <% if(currentConsult) { %>
+      <% for(let i=0; i < currentConsult.plan.length; i++) { %>
+
+      <% if (currentConsult.plan[i].category=="Laboratory" ){%>
+      <li class="circle"><%= currentConsult.plan[i].description %></li>
+</ul>
     
   </div>
 
@@ -90,9 +97,14 @@
     <h5 style="font-weight: 700; color: black;">Notes</h5>
     <!-- data goes here -->
     <ul>
-        <% others.forEach(function(item) { %>
-            <li><%= item %></li>
-        <% }); %>
+      <% if(currentConsult) { %>
+        <% for(let i=0; i < currentConsult.plan.length; i++) { %>
+          <% if(currentConsult.plan[i].category=="Others") {%>
+        <li class="circle">
+            <%= currentConsult.plan[i].description%>
+        </li>
+        <% } %>
+            <% } %>
     </ul>
     
   </div>
