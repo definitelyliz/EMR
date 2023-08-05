@@ -60,13 +60,6 @@ app.use(function (req, res, next) {
 
 app.use(nocache())
 
-app.use('/pdfFromHTML', function(req, res){
-    res.pdfFromHTML({
-        filename: 'generated.pdf',
-        html: path.resolve(__dirname, './template.html'),
-    });
-});
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
 
@@ -74,8 +67,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '/public')));
-
-
  
 //previously app.use(pdf())
 app.use(pdf); // or you can app.use(require('express-pdf'));
