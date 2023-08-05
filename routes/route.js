@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const multer = require("multer");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 const controllerUser = require('../controller/controlleruser.js');
 const controllerPatient = require('../controller/controllerpatient.js');
@@ -70,8 +71,12 @@ app.get('/patient/:patientId/deleteConsultation/:consultationId', controllerCons
 app.post('/patient/:patientId/newFile/:consultationId', upload.single("myFile"), controllerConsultation.uploadFile);
 app.delete('/delete_file/:consultationId/:fileId', controllerConsultation.deleteFile);
 
-
 app.get('/html/template.html', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'html', 'template.html'));
-});
+    // Construct the file path using the path module
+    const filePath = path.join(__dirname, '..', 'views', 'html', 'template.html');
+  
+    // Send the file as a response using Express's sendFile method
+    res.sendFile(filePath);
+  });
+  
 module.exports = app;
