@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687794615233" clover="3.2.0">
-  <project timestamp="1687794615233" name="All files">
+<coverage generated="1689607364388" clover="3.2.0">
+  <project timestamp="1689607364389" name="All files">
     <metrics statements="111" coveredstatements="25" conditionals="28" coveredconditionals="4" methods="20" coveredmethods="3" elements="159" coveredelements="32" complexity="0" loc="111" ncloc="111" packages="2" files="2" classes="2"/>
     <package name="controller">
       <metrics statements="106" coveredstatements="20" conditionals="28" coveredconditionals="4" methods="20" coveredmethods="3"/>
-      <file name="controlleruser.js" path="C:\Users\JOSIE\Desktop\EMR-feature-updateUIUX\controller\controlleruser.js">
+      <file name="controlleruser.js" path="C:\Users\JOSIE\Desktop\EMR-develop\controller\controlleruser.js">
         <metrics statements="106" coveredstatements="20" conditionals="28" coveredconditionals="4" methods="20" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -116,7 +116,7 @@
     </package>
     <package name="model">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="user.js" path="C:\Users\JOSIE\Desktop\EMR-feature-updateUIUX\model\user.js">
+      <file name="user.js" path="C:\Users\JOSIE\Desktop\EMR-develop\model\user.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

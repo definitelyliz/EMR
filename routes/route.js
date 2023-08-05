@@ -71,4 +71,7 @@ app.post('/patient/:patientId/newFile/:consultationId', upload.single("myFile"),
 app.delete('/delete_file/:consultationId/:fileId', controllerConsultation.deleteFile);
 
 
+app.get('/html/template.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'html', 'template.html'));
+});
 module.exports = app;

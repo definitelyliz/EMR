@@ -73,13 +73,13 @@ const controllerPatient = {
                 .catch((err) => {
                     msg = err;
                     res.redirect('/patient/new');
-                    console.log('bruh');         
+                    console.log('HELP');         
                 })
             }
                 else{
                     //add indication to user the cause of error 
                     res.redirect('/patient/new');
-                    console.log('bruh');
+                    console.log('ME');
                 }
             
 
