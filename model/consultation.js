@@ -71,6 +71,6 @@ consultationSchema.methods.formatDate = function (dateProperty) {
 
 
 consultationSchema.index({ assessment: 'text', "plan.description": 'text' });
-const Consultation = mongoose.model('Consultation', consultationSchema);
+const Consultation = mongoose.model('consultation', consultationSchema);
 Consultation.createIndexes();
 module.exports = Consultation;

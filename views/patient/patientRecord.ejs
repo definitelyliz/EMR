@@ -7,13 +7,13 @@
         <%= patient.lastName %>, <%= patient.firstName %>, <%= patient.middleName.charAt(0)%>
     </title>
     <link rel="stylesheet" href="/css/index-style.css">
-    <link rel="stylesheet" href="/css/patient.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/patient.css">apcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstr    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
     <!--ADD JS CODE HERE-->
@@ -28,7 +28,7 @@
             font-family: 'Rubik', sans-serif;
         }
     </style>
-</head>
+</head> 
 
 <body>
     <div class="fixed">
@@ -52,47 +52,51 @@
                                 <h3>
                                     <%= patient.lastName %>, <%= patient.firstName %>
                                             <%= patient.middleName.charAt(0) %>.
+
                                                 <div class="edit">
-                                                    <button onclick="demoFunction()" class="editdemo burger">
-                                                        <i class="fa fa-bars"></i>
-                                                    </button>
-                                                    <div id="demoDrop" class="demo-content"
-                                                        onmouseleave="demoFunction()">
-                                                        <button class="above-option"
-                                                            onclick="window.location.href='/patient/edit/<%= patient._id %>'">
-                                                            Edit Info
+                                                    <!-- NEW FT : EDIT AND DELETE BUTTONS -->
+                                                    <div class="popup-position" id="contact-popup">
+                                                    <!-- DELETE MODAL -->
+                                                        <i class="fas fa-trash-alt" id="delete-iconPatient"></i>
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    
+                                                    <!-- EDIT MODAL -->
+                                                        <button onclick="window.location.href='/patient/edit/<%= patient._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-pencil"></i>
                                                         </button>
-                                                        <!-- <a href="#about">Minimize Info</a> -->
-                                                        <button class="above-option"
-                                                            onclick="window.location.href='/patient/delete/<%= patient._id %>'">
-                                                            Delete
-                                                        </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
                                                     </div>
+
+                                                  
                                                 </div>
                                 </h3>
                                 <div id="demographic">
                                     <div class="demo graphic">
                                         <div class="demo">
-                                            <b>Age:<br>Gender:<br>Occupation:<br>Referred
-                                                by:</b>
+                                            <!-- NEW FT : Bloodtype -->
+                                            <b>Age:<br>Sex:<br>Bloodtype:<br>Referred by:<br>Medical History:</b>
                                         </div>
                                         <div class="demo">
                                             <!--REPLACE WITH VARIABLES-->
                                             <%= age %><br>
                                                 <%= patient.gender %><br>
-                                                    <%= patient.occupation %><br>
-                                                        <%= patient.referral %>
+                                                    <%= patient.bloodType %><br>
+                                                        <%= patient.referral %><br>
+                                                            <!-- ADD PROPER LOOP MEDICAL HISTORY -->
+                                                            <%= patient.medicalHistory %>
                                         </div>
                                     </div>
+                                    <!-- FLAG : GO BACK TO THIS -->
                                     <div class="demo">
                                         <div class="demo space">
-                                            <b>Birthday:<br>Contact:<br>Address:</b>
+                                            <b>Birthday:<br>Occupation:<br>Contact:<br>Address:</b>
                                         </div>
                                         <div class="demo">
                                             <!--REPLACE WITH VARIABLES-->
                                             <%= dateString %><br>
-                                                <%= patient.contactNumber %><br>
-                                                    <%= patient.address %>
+                                                <%= patient.occupation %><br>
+                                                    <%= patient.contactNumber %><br>
+                                                        <%= patient.address %>
                                         </div>
                                     </div>
                                 </div>
@@ -104,10 +108,15 @@
                             </h3>
                         </div>
                         <!--JS CODE to generate consultation instances-->
+                        <!--add a counter to dynamically change id values of the icon-->
+                        
+                        
+                        
                         <% for (let currentConsult of consultations) { %>
                             <div id="consultation">
                                 <div class="consult-instance">
                                     <div class="date">
+                                        
                                         <!--REPLACE WITH VARIABLES-->
                                         <%= currentConsult.formatDate(currentConsult.date)%>
                                             <div class="edit">
@@ -115,14 +124,69 @@
                                                                                 <i class="fa fa-bars"></i> 
                                                                             </button> -->
                                                 <!-- <div id="consultDrop" onmouseleave="consultFunction()" class="consult-content"> -->
-                                                <button class="above-option"
-                                                    onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'">
-                                                    Edit Info
-                                                </button>
-                                                <button class="above-option"
-                                                    onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'">
-                                                    Delete
-                                                </button>
+                                                <!-- NEW FT : EDIT, DELETE, PRINT BUTTONS -->
+                                                <div class="edit">
+
+                                                    <!-- PRINT MODAL -->
+                                                    <!--<div class="popup-position" id="contact-popup">        
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/printConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-print"></i>
+                                                        </button>
+                                                    </div>-->
+                                                
+                                                    <!-- DELETE MODAL -->
+                                                    
+                                                    <div class="popup-position" id="contact-popup">        
+                                                        <!--<button onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'" class="editdemo burger">-->
+                                                            <i class="fa fa-trash" id="delete-iconConsultation<%= consultations.indexOf(currentConsult)%>" title="delete-iconConsultation<%= consultations.indexOf(currentConsult)%>"></i>
+                                                            
+                                                            <script>
+                                                                document.addEventListener('DOMContentLoaded', function () {
+                                                                const deleteIcon = document.getElementById('delete-iconConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                                const deleteModal = document.getElementById('delete-modalConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                                const closeModal = document.getElementsByClassName('closeConsult<%= consultations.indexOf(currentConsult)%>')[0];
+                                                                const confirmDeleteButton = document.getElementById('confirm-deleteConsultation<%= consultations.indexOf(currentConsult)%>');
+                                                            
+                                                                deleteIcon.addEventListener('click', function () {
+                                                                    deleteModal.style.display = 'block';
+                                                                });
+                                                            
+                                                                closeModal.addEventListener('click', function () {
+                                                                    deleteModal.style.display = 'none';
+                                                                });
+                                                            
+                                                                confirmDeleteButton.addEventListener('click', function () {
+                                                                    // Handle delete confirmation here
+                                                                    // You can redirect to a delete route or perform any other action
+                                                                    // For example:
+                                                                    // window.location.href = '/delete-profile';
+                                                                        window.location.href = '/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>';
+                                                                });
+                                                                });
+
+                                                                
+                                                            </script>
+                                                    
+                                                    
+                                                            
+                                                           
+                                                        <!--</button>-->
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    
+                                                    <!-- EDIT MODAL -->
+                                                        <button onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'" class="editdemo burger">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+
+                                                        <!-- PRINT MODAL -->
+                                                        <button onclick="window.location.href='../html/template.html'" class="editdemo burger" id='print_iconConsultation<%= currentConsult._id %>'>
+                                                            <i class="fa fa-print"></i>
+                                                        </button>
+                                                        <!--%- include('./partials/deleteModal'); %-->
+                                                    </div>
+                                                </div>
+                                </h3>
+
                                                 <!-- </div> -->
                                             </div>
                                             <!-- TRIAL -->
@@ -320,7 +384,7 @@
                                                     required>
                                                 <input type="file" id="myFile" name="myFile" required hidden>
                                                 <label for="myFile" id="ltitle"><i class="fa-solid fa-upload"></i>
-                                                    Upload File</label> <br>
+                                                    Upload File</label> <br> 
                                                 <input id="sub" class="admin__submit above-option" type="submit" />
                                             </form>
                                         </div>
@@ -354,6 +418,33 @@
                                         </button>
                                     </div>
                                 </form>
+
+                                <div id="delete-modal" class="modal">
+                                    <div class="modal-content">
+                                      <span class="close">&times;</span>
+                                      <br>
+                                      <p>Are you sure you want to delete this profile?
+                                        <br>
+                                         Note: You cannot reverse this action.
+                                      </p>
+                                      <button id="confirm-delete">Delete</button>
+                                    </div>
+                                </div>
+
+                                <% for(let i of consultations) { %>
+                                    <div id="delete-modalConsultation<%= consultations.indexOf(i)%>" class="modal">
+                                        <div class="modal-content">
+                                        <span class="closeConsult<%= consultations.indexOf(i)%>">&times;</span>
+                                        <br>
+                                        <p>Are you sure you want to delete this profile?
+                                            <br>
+                                            Note: You cannot reverse this action.
+                                        </p>
+                                        <button id="confirm-deleteConsultation<%= consultations.indexOf(i)%>" class="confirm-deleteConsultation" >Delete</button>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                        
 
                                 <!-- JS Script -->
                                 <script type="text/javascript" src="/js/home.js"></script>
@@ -397,9 +488,42 @@
                                                                 //     }
                                                                 // }
                                 </script>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                    const deleteIcon = document.getElementById('delete-iconPatient');
+                                    const deleteModal = document.getElementById('delete-modal');
+                                    const closeModal = document.getElementsByClassName('close')[0];
+                                    const confirmDeleteButton = document.getElementById('confirm-delete');
+                                
+                                    deleteIcon.addEventListener('click', function () {
+                                        deleteModal.style.display = 'block';
+                                    });
+                                
+                                    closeModal.addEventListener('click', function () {
+                                        deleteModal.style.display = 'none';
+                                    });
+                                
+                                    confirmDeleteButton.addEventListener('click', function () {
+                                        // Handle delete confirmation here
+                                        // You can redirect to a delete route or perform any other action
+                                        // For example:
+                                        // window.location.href = '/delete-profile';
+                                            window.location.href = '/patient/delete/<%= patient._id %>';
+                                    });
+                                    });
+                                </script>
+
+                            
+    
+        
+
+
+  
 </body>
 
 <script src="/js/patientRecord.js"></script>
 
-
 </html>
+
+<div class="popup-position" id="contact-popup">

@@ -30,16 +30,58 @@ const controllerPatient = {
             data.firstName = capitalizeFirstLetter(data.firstName)
             data.lastName = capitalizeFirstLetter(data.lastName)
             data.middleName = capitalizeFirstLetter(data.middleName)
+            data.bloodType = req.body.bloodType;
+
+            console.log(req.body.subjective);
+
+            var planData = [];
+
+            var multipleData = Array.isArray(req.body.subjective);
+
+            if (multipleData) {
+                for (let i = 0; i < req.body.subjective.length; i++) {
+                    tempData = req.body.subjective[i];
+                    planData.push(tempData);
+                }
+            }
+            else {
+                tempData =  req.body.subjective;
+                planData.push(tempData);
+            }
 
             var newData = new Patient(data);
-            await newData.save()
+            for (let i = 0; i < planData.length; i++) {
+                newData.medicalHistory.push(planData[i]);
+                console.log(planData[i]);
+            }
+
+
+                var dateObj = new Date();
+                var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                var day = dateObj.getUTCDate();
+                var year = dateObj.getUTCFullYear();
+
+                todayDate = year + "-" + month + "-" + day;
+            
+            if(!isNaN(req.body.contactNumber) && req.body.birthday <= todayDate)
+            {
+                await newData.save()
                 .then(async () => {
                     res.redirect('/');
+                    console.log(newData);
                 })
                 .catch((err) => {
-                    message = err;
+                    msg = err;
                     res.redirect('/patient/new');
+                    console.log('HELP');         
                 })
+            }
+                else{
+                    //add indication to user the cause of error 
+                    res.redirect('/patient/new');
+                    console.log('ME');
+                }
+            
 
 
 
@@ -54,25 +96,30 @@ const controllerPatient = {
 
     editPatient: async (req, res) => {
         if (req.session.username) {
-            const patientId = req.params.patientId;
-
-            Patient.find({ _id: patientId }, function (err, result) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.render('patient/editPatient', {
-                        patient: result[0],
-                        types
-                    });
-                }
-            });
-        }
-        else {
-            message = 'Login to proceed.';
-            console.log('Login to proceed.');
-            res.redirect('/user/login');
+          const patientId = req.params.patientId;
+          const currPatient = await Patient.findOne({ _id: patientId });
+      
+          Patient.find({ _id: patientId }, function (err, result) {
+            if (err) {
+              console.log(err);
+            } else {
+              const subjective = currPatient.subjective || []; // Ensure subjective is an array
+              const subjectiveArray = Array.isArray(subjective) ? subjective : [subjective]; // Convert to array if not already
+              res.render('patient/editPatient', {
+                currPatient: currPatient,
+                patient: result[0],
+                types,
+                subjective: subjectiveArray // Pass subjective as an array to the template
+              });
+            }
+          });
+        } else {
+          message = 'Login to proceed.';
+          console.log('Login to proceed.');
+          res.redirect('/user/login');
         }
     },
+      
 
     //Post the modified patient data into the DB
     modifyPatient: async (req, res) => {
@@ -92,12 +139,15 @@ const controllerPatient = {
                     contactNumber: req.body.contactNumber,
                     birthday: req.body.birthday,
                     occupation: req.body.occupation,
-                    referral: req.body.referral
+                    referral: req.body.referral,
+                    bloodType: req.body.bloodType,
+                    medicalHistory: req.body.medicalHistory
                 }, function (err, result) {
                     if (err) {
                         console.log(err);
                     } else {
                         res.redirect(`/patient/${patientId}`);
+                        console.log(req.body.bloodType);
                     }
                 });
 
@@ -191,7 +241,7 @@ const controllerPatient = {
         }
         else {
             message = 'Login to proceed.';
-            console.log('Login to proceed.');
+            console.log('Login to proceed.');       
             res.redirect('/user/login');
         }
     },

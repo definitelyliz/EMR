@@ -15,6 +15,11 @@ body {
     background: #F1F4FE;
 }
 
+a:link, a:visited {
+    color: #26325D;
+    text-decoration: none;
+  }
+
 .wrapper {
     width: 380px;
     background: #FFFFFF;
@@ -27,6 +32,14 @@ body {
     margin-top: -15px;
     text-align: center;
     font-weight: bold;
+}
+
+.wrapper .text2 {
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-style: none;
 }
 
 .wrapper .title {
@@ -76,3 +89,10 @@ body {
     border: none;
     color: white;
 }
+
+.wrapper span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
