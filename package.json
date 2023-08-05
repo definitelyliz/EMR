@@ -8,7 +8,8 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "index": "nodemon index.js",
-    "selenium-test": "selenium-side-runner selenium/patients.side"
+    "selenium-test": "selenium-side-runner selenium/patients.side",
+    "selenium-test-2": "selenium-side-runner selenium/consultations.side"
   },
   "keywords": [],
   "author": "",

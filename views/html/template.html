@@ -32,90 +32,94 @@
 
 <body style="margin: 5%; padding: 0%;">
 
-  <h2 style="font-weight: 900; text-align: center;color: black;">Dr. Rafaela Flores, M.D., Ph.D., M.S.</h2>
+  <h2 style="font-weight: 900; text-align: center;color: black;">Dr. John Ivan S. Alonzo, MD</h2>
   <p style="text-align: center;">123 Maginhawa Street, Barangay Sikatuna, Quezon City, Metro Manila, PH<br/> 
-    rafaelaflores@gmaill.com | +63 987 420 6591 | (02) 8765-4321</p>
+    johnalonzo@gmail.com | +63 987 420 6591 | (02) 8765-4321</p>
 
   <hr style="height: 3px; border-width: 0; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0)"/>
 
   <div class="row" style="color: black;">
     <div class="column">
-      <p><strong>Name: </strong> <span id="ID1"></span> </p>
-      <p><strong>Address: </strong> <span id="ID2"></span> </p>
+      <p><strong>Name: </strong> <span id="ID1"><p>Miguel Singson</p></span> </p>
+      <p><strong>Address: </strong> <span id="ID2"><p>75 C. Salvador st. Varsity Hills
+        Loyola Heights, QC
+      </p></span> </p>
     </div>
     <div class="column">
-      <p><strong>Age: </strong> <span id="ID3"></span> </p>
-      <p><strong>Sex: </strong> <span id="ID4"></span> </p>
+      <p><strong>Age: </strong> <span id="ID3"><p>21</p></span> </p>
+      <p><strong>Sex: </strong> <span id="ID4"><p>M</p></span> </p>
   </div>
 
-  <div align="right">
-    <p id="demo"></p>
-    <script>
-      const d = new Date();
-      document.getElementById("demo").innerHTML = d.toDateString();
-    </script>
-  </div>
-
+  
+      
   <div>
+
+    <div align="left">
+      <p id="demo"></p>
+      <script>
+        const d = new Date();
+        document.getElementById("demo").innerHTML = d.toDateString();
+      </script>
+     
+    </div>
+
+    <br><br>
+
     <h5 style="font-weight: 700; color: black;">Medication</h5>
     <!-- data goes here -->
     <ul id="ID5">
-    </ul>>
-    
-  </div>
-
-  <br>
-
-  <% for (let currentConsult of consultations) { %>
-    
-    <% } %>
-  <div>
-    <h5 style="font-weight: 700; color: black;">Laboratory</h5>
-    <!-- data goes here -->
-    <ul id="ID6">
-    </ul>>
-    
-  </div>
-
-  <br>
-
-  <div>
-    <h5 style="font-weight: 700; color: black;">Notes</h5>
-    <!-- data goes here -->
-    <ul id="ID7">
+      <li>Paracetamol</li>
+      <li>Neozep</li>
     </ul>
-    
+
+    <br><br>
+
+  <h5 style="font-weight: 700; color: black;">Laboratory</h5>
+      <!-- data goes here -->
+      <ul id="ID6">
+        <li>Chest X-Ray</li>
+        <li>Blood Test</li>
+      </ul>
+
+    <br><br>
+
+  <h5 style="font-weight: 700; color: black;">Notes</h5>
+      <!-- data goes here -->
+      <ul id="ID7">
+        <li>8 Hours of Sleep</li>
+      </ul>
+
+      <br><br><br><br>
+
+      <center>
+        <div class="container">
+          <p><strong>Dr. John Ivan S. Alonzo, MD</strong>
+            <br>License # 8529731
+            <br>PTR # 6194285
+        </div>
+      
+      <hr style="height: 3px; border-width: 0; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0)"/>
+
+      <p style="font-size: x-small; color: black; text-align: center;">eReseta by STSWENG GROUP 2</p>
+      </center>
+        
+            
+        
   </div>
 
-  <br>
-  <br>
-
-  <div class="container">
-    <div class="content">
-        <p><strong>Rafaela Flores, MD</strong>
-          <br>License # 8529731
-          <br>PTR # 6194285
-        </p>
-    </div>
-</div>
 
 
   
-  <hr style="height: 3px; border-width: 0; color: rgb(0, 0, 0); background-color: rgb(0, 0, 0)"/>
 
-  <p style="font-size: x-small; color: black; text-align: center;">eReseta by STSWENG GROUP 2</p>
+
+  
+  
 
   <script>
     fetch('/api/data')
       .then(response => response.json())
       .then(data => {
-        const ID1Span = document.getElementById('ID1');
-        const ID2Span = document.getElementById('ID2');
-        const ID3Span = document.getElementById('ID3');
-        const ID4Span = document.getElementById('ID4');
-        const ID5List = document.getElementById('ID5');
-        const ID6List = document.getElementById('ID6');
-        const ID7List = document.getElementById('ID7');
+        
 
         // Assuming the fetched data is an array of objects with 'name', 'address', 'age', and 'sex' fields.
         ID1Span.textContent = data.name;
@@ -145,4 +149,4 @@
   </script>
 
 </body>
-</html>
+</html> 

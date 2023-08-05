@@ -78,6 +78,29 @@ app.use('/pdfFromHTML', function(req, res){
     });
 });
 
+app.get('/api/data', (req, res) => {
+    MongoClient.connect(mongoURL, (err, client) => {
+      if (err) {
+        console.log('Error connecting to MongoDB:', err);
+        res.status(500).send('Error connecting to MongoDB');
+        return;
+      }
+  
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
+  
+      collection.findOne({}, (err, data) => {
+        if (err) {
+          console.log('Error retrieving data from MongoDB:', err);
+          res.status(500).send('Error retrieving data from MongoDB');
+          return;
+        }
+  
+        res.json(data);
+        client.close();
+      });
+    });
+  });
 
 app.listen(3000, () => {
     console.log('I AM ON PORT 3000');
